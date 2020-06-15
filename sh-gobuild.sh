@@ -10,8 +10,10 @@ export GOPATH=$GOPATH:$(pwd)
 BINFILE=testmongodb
 TARGETDIRNAME=output
  
+#builder <MODE> <Parent Directory>
 builder(){
-    TARGETDIR=$2
+    PARENTDIR=$2
+    TARGETDIR=$PARENTDIR/$TARGETDIRNAME
     case "$1" in
     "build")  
         rice embed-go; 
@@ -20,7 +22,7 @@ builder(){
         ;;
 
     "run")
-        cd "../"
+        cd $PARENTDIR
         ${TARGETDIRNAME}/${BINFILE}
         ;;
     "runscript")
@@ -29,8 +31,8 @@ builder(){
 
     "brun")
         #build and run
-        builder build $TARGETDIR
-        builder run $TARGETDIR
+        builder build $2
+        builder run $2
         ;;
     "win")
         #comand for create icon
@@ -114,4 +116,4 @@ else
     DEFARG=$1
 fi
 echo $DEFARG
-builder $DEFARG "../"$TARGETDIRNAME
+builder $DEFARG "../"
