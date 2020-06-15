@@ -17,3 +17,9 @@ build for windows
 ```
 ./sh-gobuild.sh win
 ```
+Build for raspberry pi
+```
+./sh-gobuild.sh raspi
+```
+
+look in sh-gobuild.sh file for more details
