@@ -85,11 +85,11 @@ builder(){
         ;;
 
     "buildall")
-        builder build
-        builder win
-        builder win32
-        builder raspi
-        builder make
+        builder build $2
+        builder win $2
+        builder win32 $2
+        builder raspi $2
+        builder mac $2
         ;;
 
     "clean")
